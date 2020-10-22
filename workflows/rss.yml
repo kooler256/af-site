@@ -29,16 +29,11 @@ jobs:
           cd repo-folder
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
-          echo "12ggggg3234234" > ./file.txt
+          echo "${{ on.telegram_bot.outputs.text }}" > "$(date +"%Y_%m_%d_%I_%M_%p").txt"
           pwd
           ls -la
-          git add ./file.txt
+          git add "./*.txt"
           git commit -m "Add changes !!!"
-          git status
-          git log
-          ls -la
-          git show-ref
-          cat ./workflows/rss.yml
           git push origin main        
 
 #  add_file:
