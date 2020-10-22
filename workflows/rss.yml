@@ -31,13 +31,18 @@ jobs:
      
       - run: git --version
       
-      - name: Commit files # commit the output folder
+      - name: Commit files
+        uses: actions/checkout@v2
         run: |
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
+          git remote show origin
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote show origin
           git add ./file.txt
           git commit -m "Add changes"
-          git remote show origin
+          git push origin master
+
           
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
