@@ -37,6 +37,7 @@ jobs:
           git config --local user.name "GitHub Action test"
           git add ./file.txt
           git commit -m "Add changes"
+          git remote show origin
           
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
