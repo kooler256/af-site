@@ -31,14 +31,14 @@ jobs:
      
       - run: git --version
       
-      - uses: actions/checkout@v2
-        run: |
-          date > generated.txt
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "generated"
-          git push  
+#      - uses: actions/checkout@v2
+#        run: |
+#          date > generated.txt
+#          git config user.name github-actions
+#          git config user.email github-actions@github.com
+#          git add .
+#          git commit -m "generated"
+#          git push  
 
   #    - uses: stefanzweifel/git-auto-commit-action@v4
   #      with:
@@ -48,12 +48,12 @@ jobs:
   #        COMMIT_MESSAGE: "hello"
   #        COMMIT_AUTHOR_NAME: "CS Fixer"
   #        COMMIT_AUTHOR_EMAIL: "john.doe@example.com"
- #     - name: add and commit
- #       uses: EndBug/add-and-commit@v5
- #       with:
- #         message: "Add the very useful text file"
- #         add: "*.txt --force"
- #         author_name: Bot
- #         author_email: bot1@example.com        
- #       env:
- #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: add and commit
+        uses: EndBug/add-and-commit@v5
+        with:
+          message: "Add the very useful text file"
+          add: "*.txt --force"
+          author_name: Bot
+          author_email: bot1@example.com        
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
