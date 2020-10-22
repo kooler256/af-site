@@ -16,12 +16,30 @@ jobs:
           telegram_text: ${{ on.telegram_bot.outputs.text }}
         run: |
           echo telegram text: $telegram_text
+     
+  add_file_all:
+    name: add file
+    runs-on: ubuntu-latest
+    container: node:10.16-jessie
+    steps:
+      - name: everything
+        uses: actions/checkout@v2
+        run: |
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ./repo-folder
+          cd repo-folder
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git add ./file.txt
+          git commit -m "Add changes1"
+          git status
+          git log
+          ls
+          git push origin master        
 
   add_file:
     name: add file
     runs-on: ubuntu-latest
     container: node:10.16-jessie
-
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -41,6 +59,9 @@ jobs:
           git remote show origin
           git add ./file.txt
           git commit -m "Add changes"
+          git status
+          git log
+          ls
           git push origin master
 
           
