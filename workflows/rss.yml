@@ -28,12 +28,18 @@ jobs:
       - name: add file 123
         run: echo "123" > ./file.txt
 
-      - name: add and commit
-        uses: EndBug/add-and-commit@v5
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          message: "Add the very useful text file"
-          add: "*.txt --force"
-          author_name: Bot
-          author_email: bot1@example.com        
+          commit_message: experimen
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+ #     - name: add and commit
+ #       uses: EndBug/add-and-commit@v5
+ #       with:
+ #         message: "Add the very useful text file"
+ #         add: "*.txt --force"
+ #         author_name: Bot
+ #         author_email: bot1@example.com        
+ #       env:
+ #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
