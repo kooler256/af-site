@@ -31,6 +31,20 @@ jobs:
      
       - run: git --version
       
+      - name: Commit files # commit the output folder
+        run: |
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git add ./file.txt
+          git commit -m "Add changes"
+          
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          # branch: B77 #ignore if your branch is master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true      
+      
 #      - uses: actions/checkout@v2
 #        run: |
 #          date > generated.txt
@@ -48,12 +62,12 @@ jobs:
   #        COMMIT_MESSAGE: "hello"
   #        COMMIT_AUTHOR_NAME: "CS Fixer"
   #        COMMIT_AUTHOR_EMAIL: "john.doe@example.com"
-      - name: add and commit
-        uses: EndBug/add-and-commit@v5
-        with:
-          message: "Add the very useful text file"
-          add: "*.txt --force"
-          author_name: Bot
-          author_email: bot1@example.com        
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ #     - name: add and commit
+ #       uses: EndBug/add-and-commit@v5
+ #       with:
+ #         message: "Add the very useful text file"
+ #         add: "*.txt --force"
+ #         author_name: Bot
+ #         author_email: bot1@example.com        
+ #       env:
+ #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
