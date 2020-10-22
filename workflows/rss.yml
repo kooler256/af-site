@@ -23,17 +23,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: "./repo/"
 
-      # You can make whatever type of change to the repo...
-      - run: echo "123" > ./repo/file.txt
+      - run: echo "123" > ./file.txt
 
-      # ...and then use the action as you would normally do, but providing the path to the repo
       - uses: EndBug/add-and-commit@v5
         with:
           message: "Add the very useful text file"
           add: "*.txt --force"
-          cwd: "./repo/"
+          author_name: Bot
+          author_email: bot1@example.com        
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
