@@ -1,6 +1,11 @@
+# multiple message types
 on:
-  rss:
-    url: https://hnrss.org/newest?points=300&count=3
+  telegram_bot:
+    event:
+      - photo
+      - text
+    token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    webhook: true
 jobs:
   print:
     name: Print
@@ -8,10 +13,6 @@ jobs:
     steps:
       - name: Print Outputs
         env:
-          title: ${{on.rss.outputs.title}}
-          contentSnippet: ${{on.rss.outputs.contentSnippet}}
-          link: ${{on.rss.outputs.link}}
+          telegram_text: ${{ on.telegram_bot.outputs.text }}
         run: |
-          echo title: $title
-          echo contentSnippet: $contentSnippet
-          echo link: $link
+          echo telegram text: $telegram_text
