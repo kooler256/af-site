@@ -29,51 +29,52 @@ jobs:
           cd repo-folder
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
-          echo "12ggggg3" > ./file.txt
+          echo "12ggggg3234234" > ./file.txt
           pwd
-          ls
+          ls -la
           git add ./file.txt
-          git commit -m "Add changes1"
+          git commit -m "Add changes !!!"
           git status
           git log
-          ls
+          ls -la
+          git show-ref
           git push origin master        
 
-  add_file:
-    name: add file
-    runs-on: ubuntu-latest
-    container: node:10.16-jessie
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
+#  add_file:
+#    name: add file
+#    runs-on: ubuntu-latest
+#    container: node:10.16-jessie
+#    steps:
+#      - name: checkout
+#        uses: actions/checkout@v2
 
-      - name: add file 123
-        run: echo "123hljslfsjdfljk" > ./file.txt
+#      - name: add file 123
+#        run: echo "123hljslfsjdfljk" > ./file.txt
      
-      - run: git --version
+#      - run: git --version
       
-      - name: Commit files
-        uses: actions/checkout@v2
-        run: |
-          git config --local user.email "test@github.com"
-          git config --local user.name "GitHub Action test"
-          git remote show origin
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git remote show origin
-          git add ./file.txt
-          git commit -m "Add changes"
-          git status
-          git log
-          ls
-          git push origin master
+#      - name: Commit files
+#        uses: actions/checkout@v2
+#        run: |
+#          git config --local user.email "test@github.com"
+#          git config --local user.name "GitHub Action test"
+#          git remote show origin
+#          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+#          git remote show origin
+#          git add ./file.txt
+#          git commit -m "Add changes"
+#          git status
+#          git log
+#ls
+#          git push origin master
 
           
-      - name: Push changes # push the output folder to your repo
-        uses: ad-m/github-push-action@master
-        with:
-          # branch: B77 #ignore if your branch is master
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true      
+#      - name: Push changes # push the output folder to your repo
+#        uses: ad-m/github-push-action@master
+#        with:
+#          # branch: B77 #ignore if your branch is master
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          force: true      
       
 #      - uses: actions/checkout@v2
 #        run: |
