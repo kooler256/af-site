@@ -20,6 +20,7 @@ jobs:
   add_file:
     name: add file
     runs-on: ubuntu-latest
+    container: node
 
     steps:
       - name: checkout
