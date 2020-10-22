@@ -30,10 +30,12 @@ jobs:
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
           echo "${{ on.telegram_bot.outputs.text }}" > "$(date +"%Y_%m_%d_%I_%M_%p").txt"
+          echo "${{ on.telegram_bot.outputs.image }}" > "$(date +"%Y_%m_%d_%I_%M_%p").jpeg"
           pwd
           ls -la
           git add "./*.txt"
-          git commit -m "Add changes !!!"
+          git add "./*.jpeg"
+          git commit -m "Add changes1 !!!"
           git push origin main        
 
 #  add_file:
