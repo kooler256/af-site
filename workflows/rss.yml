@@ -38,7 +38,8 @@ jobs:
           git log
           ls -la
           git show-ref
-          git push origin master        
+          cat ./workflows/rss.yml
+          git push origin main        
 
 #  add_file:
 #    name: add file
