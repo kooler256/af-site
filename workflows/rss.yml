@@ -20,7 +20,7 @@ jobs:
   add_file:
     name: add file
     runs-on: ubuntu-latest
-    container: node
+    container: node:10.16-jessie
 
     steps:
       - name: checkout
