@@ -16,7 +16,7 @@ jobs:
           telegram_text: ${{ on.telegram_bot.outputs.text }}
         run: |
           echo telegram text: $telegram_text
-jobs:
+
   add_file:
     name: add file
     runs-on: ubuntu-latest
