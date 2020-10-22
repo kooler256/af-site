@@ -16,3 +16,24 @@ jobs:
           telegram_text: ${{ on.telegram_bot.outputs.text }}
         run: |
           echo telegram text: $telegram_text
+jobs:
+  add_file:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: "./repo/"
+
+      # You can make whatever type of change to the repo...
+      - run: echo "123" > ./repo/file.txt
+
+      # ...and then use the action as you would normally do, but providing the path to the repo
+      - uses: EndBug/add-and-commit@v5
+        with:
+          message: "Add the very useful text file"
+          add: "*.txt --force"
+          cwd: "./repo/"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
