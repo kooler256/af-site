@@ -33,7 +33,9 @@ jobs:
           commit_message: experimen
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+          COMMIT_MESSAGE: "hello"
+          COMMIT_AUTHOR_NAME: "CS Fixer"
+          COMMIT_AUTHOR_EMAIL: "john.doe@example.com"
  #     - name: add and commit
  #       uses: EndBug/add-and-commit@v5
  #       with:
